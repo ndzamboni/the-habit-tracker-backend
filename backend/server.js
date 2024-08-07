@@ -7,8 +7,12 @@ dotenv.config();
 
 const app = express();
 
+// Log environment variables
+console.log("MONGODB_URI:", process.env.MONGODB_URI);
+console.log("JWT_SECRET:", process.env.JWT_SECRET);
+
 // Connect Database
-connectDB();
+connectDB().then(() => console.log("Database connected")).catch(err => console.log("Database connection error:", err));
 
 // Init Middleware
 app.use(cors());
